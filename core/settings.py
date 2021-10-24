@@ -129,7 +129,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-ASGI_APPLICATION = "core.routing.application"
+ASGI_APPLICATION = "core.asgi.application"
 '''
 CHANNEL_LAYERS = {
     "default": {
