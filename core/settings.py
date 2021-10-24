@@ -133,12 +133,27 @@ ASGI_APPLICATION = "core.asgi.application"
 '''
 CHANNEL_LAYERS = {
     "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [('127.0.0.1',6379),],
+        },
+        #"ROUTING": "chat.routing.channel_routing",
+    },
+}
+
+'''
+CHANNEL_LAYERS = {
+    "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
+
+
+
+
+
+
 '''
-
-
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -147,7 +162,15 @@ CHANNEL_LAYERS = {
         },
     },
 }
-'''
+CACHES = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisCache',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
